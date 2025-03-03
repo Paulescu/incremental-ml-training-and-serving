@@ -69,4 +69,4 @@ Every Saturday morning.
 
 For **FREE**
 
-### [👉🏽 Subscribe for FREE](https://www.realworldml.net/subscribe)
+### [👉🏽 Subscribe for FREE](https://paulabartabajo.substack.com/)
