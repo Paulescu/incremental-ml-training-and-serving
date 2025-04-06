@@ -18,9 +18,11 @@ class Buffer:
         Appends the given data to the buffer. If the buffer is full, the oldest element
         is removed.
         """
-        self._data.append(data)
-        if len(self._data) > self.max_size:
+        if len(self._data) == self.max_size:
             self._data.pop(0)
+        
+        self._data.append(data)        # order of execution is changed. Check that the buffer is not full before append
+        
 
     def get_delayed_observation(self) -> Any:
         """
@@ -106,7 +108,7 @@ def run(
                 # get the delayed (features, target) from the buffer
                 features_with_target = buffer.get_delayed_observation()
                 # if there is a delayed observation, push it to the topic
-                if features_with_target is not None:
+                if features_with_target:   # use an if conditional on nonetype would always return False. This would work
                     message = topic_features_with_target.serialize(
                         key=None, value=features_with_target)
                     producer_of_features_with_targets.produce(
